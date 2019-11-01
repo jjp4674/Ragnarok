@@ -1,0 +1,52 @@
+﻿body {
+    background: url(/Images/bg.png) repeat #F7DCB4;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arvo', serif;
+    font-size: 13px;
+}
+
+.navbar {
+    height: 46px;
+    background-color: #5C755E;
+    padding: 0px;
+}
+
+.navbar-expand-lg > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-brand {
+    padding: 0px;
+}
+
+.logoImage {
+    display: block;
+}
+
+.logoText {
+    display: none;
+}
+
+@media screen and (min-width: 992px) {
+}
+
+@media screen and (max-width: 992px) {
+    .navbar-nav {
+        background-color: #9C9F84;
+    }
+}
+
+@media (max-width: 440px)
+{
+    .logoImage {
+        display: none;
+    }
+
+    .logoText {
+        display: block;
+    }
+}
