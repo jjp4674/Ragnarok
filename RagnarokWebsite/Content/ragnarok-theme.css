@@ -1,4 +1,6 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css?family=Arvo&display=swap');
+
+body {
     background: url(/Images/bg.png) repeat #F7DCB4;
     color: #000000;
     margin: 0;
@@ -6,6 +8,44 @@
     height: 100%;
     font-family: 'Arvo', serif;
     font-size: 13px;
+    color: #444444;
+}
+
+h1 {
+    line-height: 38px;
+    font-size: 22px;
+    color: #5C755E;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h2 {
+    line-height: 18px;
+    font-size: 16px;
+    color: #A97D5D;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+ul {
+    list-style: square outside;
+}
+
+ul, ol {
+    margin-bottom: 18px;
+    margin-left: 18px;
+    padding: 0px;
+}
+
+a, a:visited {
+    color: #9C9F84;
+}
+
+.body-content {
+    background: #FFFFFF;
+    margin-top: 46px;
 }
 
 .navbar {
@@ -14,13 +54,63 @@
     padding: 0px;
 }
 
+.navbar-nav {
+    padding-left: 8px;
+    line-height: 46px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFFFFF;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+    color: #F7DCB4;
+}
+
+.nav-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 22px;
+}
+
+.navbar-dark .navbar-nav .nav-link.current {
+    color: #F7DCB4;
+}
+
 .navbar-expand-lg > .container {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .navbar-brand {
     padding: 0px;
+}
+
+.dropdown-menu {
+    background-color: #9C9F84;
+    border: none;
+    border-radius: 0;
+    margin-top: 0px;
+    line-height: normal;
+}
+
+.dropdown-item {
+    font-size: 15px;
+    padding: 10px 15px;
+}
+
+a.dropdown-item, a.dropdown-item:visited {
+    color: #FFFFFF;
+}
+
+a.dropdown-item.current {
+    color: #F7DCB4;
+}
+
+a.dropdown-item:hover {
+    color: #F7DCB4;
+    background-color: #9C9F84;
 }
 
 .logoImage {
@@ -29,14 +119,88 @@
 
 .logoText {
     display: none;
+    height: 46px;
+    line-height: 46px;
 }
 
-@media screen and (min-width: 992px) {
+.dateImage {
+    display: block;
+    margin: auto;
 }
 
-@media screen and (max-width: 992px) {
+.dateText {
+    display: none;
+}
+
+.date {
+    font-size: 20px;
+    color: #A97D5D;
+}
+
+.location {
+    font-size: 11px;
+    color: #A97D5D;
+}
+
+.footer {
+    background: #9C9F84;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.footer p {
+    margin-bottom: 0px;
+    line-height: 28px;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.textImage {
+    width: 500px;
+    height: 334px;
+    float: right;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    border: 3px solid #5C755E;
+}
+
+.calloutImage {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    max-width: 312px;
+    margin-bottom: 10px;
+    border: 3px solid #5C755E;
+}
+
+@media (max-width: 992px) {
     .navbar-nav {
         background-color: #9C9F84;
+    }
+
+    .textImage {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        max-width: 500px;
+        margin-bottom: 10px;
+        border: 3px solid #5C755E;
+        float: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .dateImage {
+        display: none;
+        margin: auto;
+    }
+
+    .dateText {
+        display: block;
     }
 }
 

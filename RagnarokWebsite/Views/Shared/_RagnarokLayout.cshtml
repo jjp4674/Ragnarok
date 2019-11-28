@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using RagnarokWebsite.Extensions;
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -10,76 +12,59 @@
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"><img class="logoImage" src="~/Images/logo35.png" alt="Dagorhir Ragnarok XXXV" /><span class="logoText">Dagorhir Ragnarok XXXV</span></a>
+            <a class="navbar-brand" href="/Home"><img class="logoImage" src="~/Images/logo35.png" alt="Dagorhir Ragnarok XXXV" /><span class="logoText">Dagorhir Ragnarok XXXV</span></a>
             <button class="navbar-toggler align-top" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/Home/Index">Home</a>
+                        @Html.NavigationLink("Registration", "Index", "Registration")
+                    </li>
+                    <li class="nav-item">
+                        @Html.NavigationLink("Schedule", "Index", "Schedule")
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
-                            About
+                        <a href="#" class="nav-link dropdown-toggle @Html.DropdownToggleCurrent("Information")" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
+                            Information
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
+                            @Html.DropdownLink("Pricing", "Pricing", "Information")
+                            @Html.DropdownLink("Event Rules", "EventRules", "Information")
+                            @Html.DropdownLink("Code of Conduct", "CodeOfConduct", "Information")
+                            @Html.DropdownLink("Camp Master Information", "CampMasters", "Information")
+                            @Html.DropdownLink("Land Grab Information", "LandGrab", "Information")
+                            @Html.DropdownLink("Merchant List", "MerchantList", "Information")
+                            @Html.DropdownLink("Site Map", "Map", "Information")
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/Home/Contact">Contact</a>
+                        @Html.NavigationLink("FAQ", "Index", "FAQ")
                     </li>
-                </ul> 
+                    <li class="nav-item">
+                        @Html.NavigationLink("Staff", "Index", "Staff")
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    @*<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </nav>*@
-
-
     <div class="container body-content">
+        <div class="row">
+            <div class="col-12 pt-2 pb-2 text-center">
+                <img class="dateImage pt-1 pb-1" src="~/Images/date2020.png" alt="June 20-28, 2020 - Cooper's Lake Campground, Slippery Rock, PA" /><span class="dateText"><span class="date">June 20-28, 2020</span><br /><span class="location">Cooper's Lake Campground, Slippery Rock, PA</span></span>
+            </div>
+        </div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Dagorhir Ragnarok, LLC</p>
-        </footer>
+
+        <div class="row footer">
+            <div class="col-md-6">
+                <p>&copy; @DateTime.Now.Year - Dagorhir Ragnarok, LLC</p>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <p>Privacy Policy | Terms & Conditions | Login</p>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

@@ -122,10 +122,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\ScheduleController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Extensions\LinkExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +147,27 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\bg.png" />
+    <Content Include="Images\callout1.png" />
+    <Content Include="Images\callout2.png" />
+    <Content Include="Images\callout3.png" />
+    <Content Include="Images\camp.jpg" />
+    <Content Include="Images\date2020.png" />
+    <Content Include="Images\HomeImage.jpg" />
     <Content Include="Images\logo35.png" />
+    <Content Include="Images\Staff\adrius.jpg" />
+    <Content Include="Images\Staff\dominus.jpg" />
+    <Content Include="Images\Staff\drakekin.jpg" />
+    <Content Include="Images\Staff\hamish.jpg" />
+    <Content Include="Images\Staff\illisai.jpg" />
+    <Content Include="Images\Staff\janwin.jpg" />
+    <Content Include="Images\Staff\lesair.jpg" />
+    <Content Include="Images\Staff\miach.jpg" />
+    <Content Include="Images\Staff\noroko.jpg" />
+    <Content Include="Images\Staff\redraven.jpg" />
+    <Content Include="Images\Staff\sophia.jpg" />
+    <Content Include="Images\Staff\tannhauser.jpg" />
+    <Content Include="Images\Staff\valkyrie.jpg" />
+    <Content Include="Images\tent.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -192,9 +219,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_RagnarokLayout.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -206,10 +230,21 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Information\Pricing.cshtml" />
+    <Content Include="Views\Information\EventRules.cshtml" />
+    <Content Include="Views\Schedule\Index.cshtml" />
+    <Content Include="Views\Information\CodeOfConduct.cshtml" />
+    <Content Include="Views\Information\MerchantInformation.cshtml" />
+    <Content Include="Views\Information\CampMasters.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Information\LandGrab.cshtml" />
+    <Content Include="Views\Information\Map.cshtml" />
+    <Content Include="Views\Information\MerchantList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\FAQ\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

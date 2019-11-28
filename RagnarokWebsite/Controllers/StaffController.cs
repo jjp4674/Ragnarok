@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace RagnarokWebsite.Controllers
 {
-    public class HomeController : Controller
+    public class StaffController : Controller
     {
+        // GET: Staff
         public ActionResult Index()
         {
             return View();
