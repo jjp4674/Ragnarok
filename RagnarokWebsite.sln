@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagnarokWebsite", "RagnarokWebsite\RagnarokWebsite.csproj", "{19EA33EB-F0D6-4010-BCF7-5B70675072A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RagnarokWebsite.Data", "RagnarokWebsite.Data\RagnarokWebsite.Data.csproj", "{DDE1B3D7-1030-41BE-A8FC-1A60DC3CF18E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{19EA33EB-F0D6-4010-BCF7-5B70675072A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19EA33EB-F0D6-4010-BCF7-5B70675072A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19EA33EB-F0D6-4010-BCF7-5B70675072A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDE1B3D7-1030-41BE-A8FC-1A60DC3CF18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDE1B3D7-1030-41BE-A8FC-1A60DC3CF18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDE1B3D7-1030-41BE-A8FC-1A60DC3CF18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDE1B3D7-1030-41BE-A8FC-1A60DC3CF18E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 ﻿@using RagnarokWebsite.Extensions;
+@using RagnarokWebsite.Security.Constants;
 
 <!DOCTYPE html>
 <html>
@@ -44,6 +45,24 @@
                     <li class="nav-item">
                         @Html.NavigationLink("Staff", "Index", "Staff")
                     </li>
+                    @if (CheckPermission(PermissionConstants.VIEW_USER_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_ROLE_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_ATTENDEE_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_CAMP_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_ATTENDEE_CHECKIN))
+                    {
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle @Html.DropdownToggleCurrent("Administration")" id="navbarAdDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
+                            Administration
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarAdDropdown">
+                            @if (CheckPermission(PermissionConstants.VIEW_ROLE_ADMINISTRATION))
+                            {
+                                @Html.DropdownLink("Role Administration", "Roles", "Administration")
+                            }
+                            @if (CheckPermission(PermissionConstants.VIEW_USER_ADMINISTRATION))
+                            {
+                                @Html.DropdownLink("User Administration", "Users", "Administration")
+                            }
+                        </div>
+                    </li>
+                    }
                 </ul>
             </div>
         </div>
@@ -62,7 +81,7 @@
                 <p>&copy; @DateTime.Now.Year - Dagorhir Ragnarok, LLC</p>
             </div>
             <div class="col-md-6 text-md-right">
-                <p>Privacy Policy | Terms & Conditions | Login</p>
+                <p>Privacy Policy | Terms & Conditions | @Html.Partial("_LoginPartial")</p>
             </div>
         </div>
     </div>

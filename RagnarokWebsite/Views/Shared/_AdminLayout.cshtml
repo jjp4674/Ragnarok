@@ -1,0 +1,88 @@
+﻿@using RagnarokWebsite.Extensions;
+@using RagnarokWebsite.Security.Constants;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/Home"><img class="logoImage" src="~/Images/logo35.png" alt="Dagorhir Ragnarok XXXV" /><span class="logoText">Dagorhir Ragnarok XXXV</span></a>
+            <button class="navbar-toggler align-top" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        @Html.NavigationLink("Registration", "Index", "Registration")
+                    </li>
+                    <li class="nav-item">
+                        @Html.NavigationLink("Schedule", "Index", "Schedule")
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle @Html.DropdownToggleCurrent("Information")" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
+                            Information
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @Html.DropdownLink("Pricing", "Pricing", "Information")
+                            @Html.DropdownLink("Event Rules", "EventRules", "Information")
+                            @Html.DropdownLink("Code of Conduct", "CodeOfConduct", "Information")
+                            @Html.DropdownLink("Camp Master Information", "CampMasters", "Information")
+                            @Html.DropdownLink("Land Grab Information", "LandGrab", "Information")
+                            @Html.DropdownLink("Merchant List", "MerchantList", "Information")
+                            @Html.DropdownLink("Site Map", "Map", "Information")
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        @Html.NavigationLink("FAQ", "Index", "FAQ")
+                    </li>
+                    <li class="nav-item">
+                        @Html.NavigationLink("Staff", "Index", "Staff")
+                    </li>
+                    @if (CheckPermission(PermissionConstants.VIEW_USER_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_ROLE_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_ATTENDEE_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_CAMP_ADMINISTRATION) || CheckPermission(PermissionConstants.VIEW_ATTENDEE_CHECKIN))
+                    {
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle @Html.DropdownToggleCurrent("Administration")" id="navbarAdDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" area-expanded="false">
+                                Administration
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarAdDropdown">
+                                @if (CheckPermission(PermissionConstants.VIEW_ROLE_ADMINISTRATION))
+                                {
+                                    @Html.DropdownLink("Role Administration", "Roles", "Administration")
+                                }
+                                @if (CheckPermission(PermissionConstants.VIEW_USER_ADMINISTRATION))
+                                {
+                                    @Html.DropdownLink("User Administration", "Users", "Administration")
+                                }
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+
+        <div class="row footer">
+            <div class="col-md-6">
+                <p>&copy; @DateTime.Now.Year - Dagorhir Ragnarok, LLC</p>
+            </div>
+            <div class="col-md-6 text-md-right">
+                <p>Privacy Policy | Terms & Conditions | @Html.Partial("_LoginPartial")</p>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

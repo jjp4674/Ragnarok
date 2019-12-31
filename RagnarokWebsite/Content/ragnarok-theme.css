@@ -7,7 +7,7 @@ body {
     padding: 0;
     height: 100%;
     font-family: 'Arvo', serif;
-    font-size: 13px;
+    font-size: 15px;
     color: #444444;
 }
 
@@ -21,6 +21,15 @@ h1 {
 }
 
 h2 {
+    line-height: 18px;
+    font-size: 18px;
+    color: #A97D5D;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h3 {
     line-height: 18px;
     font-size: 16px;
     color: #A97D5D;
@@ -46,6 +55,25 @@ a, a:visited {
 .body-content {
     background: #FFFFFF;
     margin-top: 46px;
+}
+
+.login-body-content {
+    background: #FFFFFF;
+}
+
+.loginPanel {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.loginPanelContents {
+    max-width: 400px;
+    margin: auto;
+}
+
+.centerButton {
+    margin: 0 auto;
+    display: block;
 }
 
 .navbar {
@@ -96,8 +124,8 @@ a, a:visited {
 }
 
 .dropdown-item {
-    font-size: 15px;
-    padding: 10px 15px;
+    font-size: 18px;
+    padding: 8px 15px;
 }
 
 a.dropdown-item, a.dropdown-item:visited {
@@ -174,6 +202,76 @@ a.dropdown-item:hover {
     max-width: 312px;
     margin-bottom: 10px;
     border: 3px solid #5C755E;
+}
+
+.headerRight {
+    margin-top: 20px;
+}
+
+.deleteButton {
+    display: inline !important;
+}
+
+.deleteButton input[type=submit] {
+    padding: 0;
+    border: 0;
+}
+
+.col-form-label {
+    line-height: 38px;
+    padding: 0;
+}
+
+input {
+    max-width: none;
+}
+
+input[type="button"].btn-link, input[type="submit"].btn-link {
+    border: 0px;
+    padding: 0px;
+}
+
+ul.treeview ul {
+    padding-left: 20px;
+}
+
+ul.treeview .section {
+    font-weight: bold;
+}
+
+ul.treeview, ul.treeview > ul {
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 0px;
+}
+
+ul.treeview li {
+    list-style: none;
+    padding-left: 20px;
+}
+
+input[type=checkbox], .checkbox input[type=checkbox] {
+    margin-left: 0px;
+}
+
+.btn-link {
+    padding: 0px;
+    vertical-align: top;
+    border: 0px;
+    color: #9C9F84;
+    background-color: transparent;
+}
+
+span.btn-link {
+    cursor: pointer;
+}
+
+a.white {
+    color: #FFFFFF;
+}
+
+a.white:hover {
+    text-decoration: none;
 }
 
 @media (max-width: 992px) {

@@ -1,0 +1,29 @@
+﻿@model RagnarokWebsite.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log In";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="loginPanel">
+    <h1>Log In</h1>
+    <div class="loginPanelWhite">
+        @using (Html.BeginForm())
+        {
+            <div class="loginPanelContents">
+                @Html.EditorForModel()
+
+                <div class="row">
+                    <div class="col-12 pt-2">
+                        <button type="submit" class="centerButton">Log In</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pt-2">
+                        @Html.ValidationSummary(true)
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

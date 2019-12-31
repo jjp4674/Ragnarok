@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace RagnarokWebsite.Controllers
 {
+    [AllowAnonymous]
     public class ScheduleController : Controller
     {
         // GET: Schedule

@@ -18,6 +18,12 @@ namespace RagnarokWebsite
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Administration",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Users", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }

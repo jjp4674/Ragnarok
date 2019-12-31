@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <a href="/Logout" class="white">Log Out</a>
+}
+else
+{
+    <a href="/Login" class="white">Log In</a>
+}
