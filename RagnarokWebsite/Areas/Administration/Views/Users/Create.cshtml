@@ -1,0 +1,102 @@
+﻿@model RagnarokWebsite.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Ragnarok > User Administration - Add New User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12"><h2>User Administration - Add New User</h2></div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @Html.AntiForgeryToken()
+
+        <div class="col-12">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Username</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Password</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Email</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">First Name</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Last Name</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Roles</h2>
+            <ul class="treeview">
+                @for (int i = 0; i < Model.Roles.Count; i++)
+                {
+                <li>
+                    <div class="checkbox">
+                        @Html.HiddenFor(m => m.Roles[i].RoleId)
+                        @Html.CheckBoxFor(m => m.Roles[i].IsSelected)
+                        @Html.LabelFor(m => m.Roles[i].IsSelected, Model.Roles[i].Name)
+                    </div>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <input type="submit" value="Add User" class="btn btn-success centerButton" />
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-12 pb-2">
+        @Html.ActionLink("Back to Users", "Index")
+    </div>
+</div>

@@ -52,6 +52,10 @@
                                 Administration
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarAdDropdown">
+                                @if (CheckPermission(PermissionConstants.VIEW_CAMP_ADMINISTRATION))
+                                {
+                                    @Html.DropdownLink("Camp Administration", "Camps", "Administration")
+                                }
                                 @if (CheckPermission(PermissionConstants.VIEW_ROLE_ADMINISTRATION))
                                 {
                                     @Html.DropdownLink("Role Administration", "Roles", "Administration")

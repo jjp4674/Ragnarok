@@ -1,0 +1,134 @@
+﻿@model RagnarokWebsite.Models.CampsViewModel
+
+@using PagedList.Mvc;
+@using RagnarokWebsite.Security.Constants;
+
+@{
+    ViewBag.Title = "Ragnarok > Camp Administration";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8 col-xs-12"><h1>Role Administration</h1></div>
+    <div class="col-md-4 col-xs-12 right headerRight text-right">
+        @if (CheckPermission(PermissionConstants.CREATE_NEW_CAMPS))
+        {
+            @Html.ActionLink("Add New Camp", "Create")
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 col-xs-12 pb-2">
+        @using (Html.BeginForm("Index", "Camps", FormMethod.Get))
+        {
+            @Html.HiddenFor(model => Model.Page)
+            @Html.HiddenFor(model => Model.Year)
+            @:Show 
+            <select id="PageLength" name="PageLength" onchange="form.submit();">
+                @if (Model.PageLength == 10)
+                {
+                    <option value="10" selected>10</option>
+                }
+                else
+                {
+                    <option value="10">10</option>
+                }
+                @if (Model.PageLength == 25)
+                {
+                    <option value="25" selected>25</option>
+                }
+                else
+                {
+                    <option value="25">25</option>
+                }
+                @if (Model.PageLength == 50)
+                {
+                    <option value="50" selected>50</option>
+                }
+                else
+                {
+                    <option value="50">50</option>
+                }
+                @if (Model.PageLength == 100)
+                {
+                    <option value="100" selected>100</option>
+                }
+                else
+                {
+                    <option value="100">100</option>
+                }
+            </select>@: entries
+        }
+    </div>
+    <div class="col-md-6 col-xs-12 pb-2 text-right">
+        @using (Html.BeginForm("Index", "Camps", FormMethod.Get))
+        {
+            @Html.HiddenFor(model => Model.Page)
+            @Html.HiddenFor(model => Model.PageLength)
+            @:Year: @Html.DropDownListFor(model => Model.Year, Model.Options, new { @onchange = @"form.submit();" })
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Camp Master</th>
+                    <th>Location</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var camp in Model.Camps)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => camp.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => camp.CampMaster.CharacterName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => camp.Location)
+                        </td>
+                        <td class="text-right">
+                            @if (CheckPermission(PermissionConstants.EDIT_EXISTING_CAMPS))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = camp.CampId })
+                            }
+                            @if (CheckPermission(PermissionConstants.DELETE_CAMPS))
+                            {
+                                if (CheckPermission(PermissionConstants.EDIT_EXISTING_CAMPS))
+                                {
+                                    <span> | </span>
+                                }
+
+                                using (Html.BeginForm("Delete", "Camps", FormMethod.Post, new { @class = "btn-link deleteButton" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("campId", camp.CampId)
+                                    <input type="submit" class="btn-link" value="Delete" onclick="return confirm('Are you sure you wish to remove this camp?')" />
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3 pt-2 pb-2">
+        Showing @Model.Camps.FirstItemOnPage to @Model.Camps.LastItemOnPage of @Model.Camps.TotalItemCount Records
+    </div>
+    <div class="col-9 pt-2 pb-2 text-center">
+        @Html.PagedListPager(Model.Camps, page => Url.Action("Index", new { page,
+            PageLength = Model.PageLength,
+            Year = Model.Year
+        }), new PagedListRenderOptions { LinkToFirstPageFormat = "First", LinkToPreviousPageFormat = "Previous", LinkToNextPageFormat = "Next", LinkToLastPageFormat = "Last",
+            DisplayLinkToFirstPage = PagedListDisplayMode.Always, DisplayLinkToPreviousPage = PagedListDisplayMode.Always, DisplayLinkToNextPage = PagedListDisplayMode.Always,
+            DisplayLinkToLastPage = PagedListDisplayMode.Always, DisplayEllipsesWhenNotShowingAllPageNumbers = true, MaximumPageNumbersToDisplay = 10 })
+    </div>
+</div>

@@ -1,18 +1,9 @@
-2020-01-10 19:19:21,486 [12] ERROR RagnarokWebsite.MvcApplication [(null)] - An Error Occurred
-System.Web.HttpParseException (0x80004005): Encountered end tag "select" with no matching start tag.  Are your start/end tags properly balanced?
-
-   at System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()
-   at System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()
-   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
-   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
-   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
-   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
-   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
-   at System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)
-   at System.Web.Compilation.BuildManager.GetCompiledType(String virtualPath)
-   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)
+2019-12-30 18:08:07,353 [12] ERROR RagnarokWebsite.MvcApplication [(null)] - An Error Occurred
+System.Web.HttpException (0x80004005): The layout page "~/Views/Shared/_LoginLayout.cshtml" could not be found at the following path: "~/Views/Shared/_LoginLayout.cshtml".
+   at System.Web.WebPages.WebPageExecutingBase.NormalizeLayoutPagePath(String layoutPagePath)
+   at System.Web.WebPages.WebPageBase.PopContext()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
    at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
    at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
    at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)

@@ -113,6 +113,7 @@ a, a:visited {
 
 .navbar-brand {
     padding: 0px;
+    font-size: 18px;
 }
 
 .dropdown-menu {
@@ -139,6 +140,10 @@ a.dropdown-item.current {
 a.dropdown-item:hover {
     color: #F7DCB4;
     background-color: #9C9F84;
+}
+
+.dropdown-toggle::after {
+    margin-left: 0px;
 }
 
 .logoImage {
@@ -222,13 +227,13 @@ a.dropdown-item:hover {
     padding: 0;
 }
 
-input {
-    max-width: none;
-}
-
 input[type="button"].btn-link, input[type="submit"].btn-link {
     border: 0px;
     padding: 0px;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 100%;
 }
 
 ul.treeview ul {
@@ -248,6 +253,14 @@ ul.treeview, ul.treeview > ul {
 ul.treeview li {
     list-style: none;
     padding-left: 20px;
+}
+
+ul.pagination {
+    margin: 0;
+}
+
+ul.pagination > li {
+    margin-left: 4px;
 }
 
 input[type=checkbox], .checkbox input[type=checkbox] {
@@ -288,6 +301,17 @@ a.white:hover {
         margin-bottom: 10px;
         border: 3px solid #5C755E;
         float: none;
+    }
+
+    .navbar-collapse {
+        position: absolute;
+        top: 46px;
+        left: 0px;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        margin-left: 0px;
     }
 }
 
