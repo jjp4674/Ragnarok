@@ -1,30 +1,29 @@
-﻿@model RagnarokWebsite.Models.CampsViewModel
+﻿@model RagnarokWebsite.Models.AttendeesViewModel
 
 @using PagedList.Mvc;
 @using RagnarokWebsite.Security.Constants;
 
 @{
-    ViewBag.Title = "Ragnarok > Camp Administration";
+    ViewBag.Title = "Ragnarok > Attendee Administration";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="row">
-    <div class="col-md-4 col-xs-12"><h1>Role Administration</h1></div>
+    <div class="col-md-4 col-xs-12"><h1>Attendee Administration</h1></div>
     <div class="col-md-8 col-xs-12 right headerRight text-right">
-        @Html.ActionLink("Generate Registration Numbers", "GenerateNumbers") |
-        @if (CheckPermission(PermissionConstants.CREATE_NEW_CAMPS))
+        @if (CheckPermission(PermissionConstants.CREATE_NEW_ATTENDEES))
         {
-            @Html.ActionLink("Add New Camp", "Create")
+            @Html.ActionLink("Add New Attendee", "Create")
         }
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6 col-xs-12 pb-2">
-        @using (Html.BeginForm("Index", "Camps", FormMethod.Get))
+    <div class="col-md-4 col-xs-12 pb-2">
+        @using (Html.BeginForm("Index", "Attendees", FormMethod.Get))
         {
             @Html.HiddenFor(model => Model.Page)
             @Html.HiddenFor(model => Model.Year)
-            @:Show 
+            @:Show
             <select id="PageLength" name="PageLength" onchange="form.submit();">
                 @if (Model.PageLength == 10)
                 {
@@ -61,12 +60,21 @@
             </select>@: entries
         }
     </div>
-    <div class="col-md-6 col-xs-12 pb-2 text-right">
-        @using (Html.BeginForm("Index", "Camps", FormMethod.Get))
+    <div class="col-md-8 col-xs-12 pb-2 text-right">
+        @using (Html.BeginForm("Index", "Attendees", FormMethod.Get))
         {
             @Html.HiddenFor(model => Model.Page)
             @Html.HiddenFor(model => Model.PageLength)
+            @Html.EditorFor(model => Model.Search)
+            <input type="submit" class="btn btn-sm btn-success" value="Search" />@:&nbsp;| &nbsp;
             @:Year: @Html.DropDownListFor(model => Model.Year, Model.Options, new { @onchange = @"form.submit();" })
+        }
+
+        @using (Html.BeginForm("Index", "Attendees", FormMethod.Get))
+        {
+            @Html.HiddenFor(model => Model.Page)
+            @Html.HiddenFor(model => Model.PageLength)
+
         }
     </div>
 </div>
@@ -75,46 +83,65 @@
         <table class="table table-condensed table-striped">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Camp Master</th>
-                    <th>Location</th>
-                    <th># of Reg</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>DOB</th>
+                    <th>Minor</th>
+                    <th>Camp</th>
+                    <th>Character Name</th>
+                    <th>Merchant</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var camp in Model.Camps)
+                @foreach (var attendee in Model.Attendees)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => camp.Name)
+                            @Html.DisplayFor(modelItem => attendee.LastName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => camp.CMCharacterName)
+                            @Html.DisplayFor(modelItem => attendee.FirstName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => camp.Location)
+                            @{ 
+                                string dateValue = attendee.DOB.ToString("MM/dd/yyyy");
+                            }
+                            @Html.DisplayFor(modelItem => dateValue)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => camp.NumRegistrations)
+                            @Html.DisplayFor(modelItem => attendee.IsMinor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => attendee.CampName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => attendee.CharacterName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => attendee.IsMerchant)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => attendee.Status)
                         </td>
                         <td class="text-right">
-                            @if (CheckPermission(PermissionConstants.EDIT_EXISTING_CAMPS))
+                            @if (CheckPermission(PermissionConstants.EDIT_EXISTING_ATTENDEES))
                             {
-                                @Html.ActionLink("Edit", "Edit", new { id = camp.CampId })
+                                @Html.ActionLink("Edit", "Edit", new { id = attendee.ParticipantId })
                             }
-                            @if (CheckPermission(PermissionConstants.DELETE_CAMPS))
+                            @if (CheckPermission(PermissionConstants.DELETE_ATTENDEES))
                             {
-                                if (CheckPermission(PermissionConstants.EDIT_EXISTING_CAMPS))
+                                if (CheckPermission(PermissionConstants.EDIT_EXISTING_ATTENDEES))
                                 {
                                     <span> | </span>
                                 }
 
-                                using (Html.BeginForm("Delete", "Camps", FormMethod.Post, new { @class = "btn-link deleteButton" }))
+                                using (Html.BeginForm("Delete", "Attendees", FormMethod.Post, new { @class = "btn-link deleteButton" }))
                                 {
                                     @Html.AntiForgeryToken()
-                                    @Html.Hidden("campId", camp.CampId)
-                                    <input type="submit" class="btn-link" value="Delete" onclick="return confirm('Are you sure you wish to remove this camp?')" />
+                                    @Html.Hidden("participantId", attendee.ParticipantId)
+                                    <input type="submit" class="btn-link" value="Delete" onclick="return confirm('Are you sure you wish to remove this attendee?')" />
                                 }
                             }
                         </td>
@@ -126,10 +153,10 @@
 </div>
 <div class="row">
     <div class="col-md-4 col-xs-12 pt-2 pb-2">
-        Showing @Model.Camps.FirstItemOnPage to @Model.Camps.LastItemOnPage of @Model.Camps.TotalItemCount Records
+        Showing @Model.Attendees.FirstItemOnPage to @Model.Attendees.LastItemOnPage of @Model.Attendees.TotalItemCount Records
     </div>
     <div class="col-md-8 col-xs-12 pt-2 pb-2 text-center">
-        @Html.PagedListPager(Model.Camps, page => Url.Action("Index", new { page,
+        @Html.PagedListPager(Model.Attendees, page => Url.Action("Index", new { page,
             PageLength = Model.PageLength,
             Year = Model.Year
         }), new PagedListRenderOptions { LinkToFirstPageFormat = "First", LinkToPreviousPageFormat = "Previous", LinkToNextPageFormat = "Next", LinkToLastPageFormat = "Last",

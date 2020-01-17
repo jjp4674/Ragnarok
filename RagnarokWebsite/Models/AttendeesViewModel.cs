@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace RagnarokWebsite.Models
 {
-    public class CampsViewModel
+    public class AttendeesViewModel
     {
         public int Page { get; set; }
         public int PageLength { get; set; }
@@ -13,9 +13,11 @@ namespace RagnarokWebsite.Models
         public List<SelectListItem> Options { get; set; }
         public string Year { get; set; }
 
-        public IPagedList<CampViewModel> Camps { get; set; }
+        public string Search { get; set; }
 
-        public CampsViewModel()
+        public IPagedList<AttendeeViewModel> Attendees { get; set; }
+        
+        public AttendeesViewModel()
         {
             Options = DateExtensions.GetDateOptions();
         }

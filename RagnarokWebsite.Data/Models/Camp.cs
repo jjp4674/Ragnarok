@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RagnarokWebsite.Data.Models
 {
@@ -14,5 +13,7 @@ namespace RagnarokWebsite.Data.Models
         public short Year { get; set; }
 
         public virtual CampMaster CampMaster { get; set; }
+
+        public virtual ICollection<Participant> Participants { get; set; }
     }
 }

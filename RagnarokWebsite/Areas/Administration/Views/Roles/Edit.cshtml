@@ -47,7 +47,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 pt-2">
             <h2>Permissions</h2>
             <ul class="treeview">
                 @foreach (PermissionGroupViewModel pgvm in Model.Permissions.Where(p => p.ParentId == null).ToList())
@@ -59,7 +59,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 pt-2">
             <input type="submit" value="Save" class="btn btn-success centerButton" />
         </div>
     </div>

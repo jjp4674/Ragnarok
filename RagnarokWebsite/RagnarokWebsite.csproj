@@ -166,9 +166,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AttendeesController.cs" />
     <Compile Include="Areas\Administration\Controllers\CampsController.cs" />
     <Compile Include="Areas\Administration\Controllers\RolesController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Constants\YearConstants.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
@@ -178,11 +180,15 @@
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
     <Compile Include="Extensions\LinkExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AttendeesViewModel.cs" />
+    <Compile Include="Models\AttendeeViewModel.cs" />
     <Compile Include="Models\CampsViewModel.cs" />
+    <Compile Include="Models\CampViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PermissionGroupViewModel.cs" />
     <Compile Include="Models\PermissionViewModel.cs" />
@@ -265,6 +271,11 @@
     <Content Include="Areas\Administration\Views\Users\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Camps\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Camps\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\Camps\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Camps\GenerateNumbers.cshtml" />
+    <Content Include="Areas\Administration\Views\Attendees\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Attendees\Create.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -326,7 +337,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Constants\" />
     <Folder Include="Views\FAQ\" />
     <Folder Include="Views\Logout\" />
   </ItemGroup>

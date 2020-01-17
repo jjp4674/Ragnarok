@@ -22,7 +22,7 @@ namespace RagnarokWebsite.Areas.Administration.Controllers
         {
             if (!ValidateCredentials(PermissionConstants.VIEW_USER_ADMINISTRATION))
             {
-                return RedirectToAction("Index", "Dashboard", new { area = "" });
+                return RedirectToAction("Index", "Home", new { area = "" });
             }
 
             return View(db.Users.Where(u => !u.Deleted).OrderBy(u => u.Username).ToList());
@@ -42,6 +42,11 @@ namespace RagnarokWebsite.Areas.Administration.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection formCollection)
         {
+            if (!ValidateCredentials(PermissionConstants.CREATE_NEW_USERS))
+            {
+                return RedirectToAction("Index");
+            }
+
             try
             {
                 var userId = GetCurrentUserId();
@@ -126,6 +131,11 @@ namespace RagnarokWebsite.Areas.Administration.Controllers
         [HttpPost]
         public ActionResult Edit(FormCollection formCollection)
         {
+            if (!ValidateCredentials(PermissionConstants.EDIT_EXISTING_USERS))
+            {
+                return RedirectToAction("Index");
+            }
+
             try
             {
                 var userId = GetCurrentUserId();

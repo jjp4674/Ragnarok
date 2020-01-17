@@ -52,8 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\RagnarokContext.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ContactInformation.cs" />
+    <Compile Include="Models\EmergencyContact.cs" />
+    <Compile Include="Models\HealthIssue.cs" />
+    <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Camp.cs" />
     <Compile Include="Models\CampMaster.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\PermissionGroup.cs" />
     <Compile Include="Models\Role.cs" />

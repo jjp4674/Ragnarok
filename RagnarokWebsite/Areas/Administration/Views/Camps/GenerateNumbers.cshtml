@@ -1,0 +1,27 @@
+﻿@model IEnumerable<RagnarokWebsite.Models.CampViewModel>
+
+@{
+    /**/
+
+    ViewBag.Title = "Ragnarok > Camp Administration - Generate Registration Numbers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12"><h2>Camp Administration - Generate Registration Numbers</h2></div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        @foreach (var camp in Model)
+        {
+            @Html.DisplayFor(modelItem => camp.Name)@: &colon; @Html.DisplayFor(modelItem => camp.NumRegistrations)<br />
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 pb-2 pb-2">
+        @Html.ActionLink("Back to Camps", "Index")
+    </div>
+</div>

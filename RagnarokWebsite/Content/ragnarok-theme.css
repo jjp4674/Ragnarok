@@ -223,7 +223,7 @@ a.dropdown-item:hover {
 }
 
 .col-form-label {
-    line-height: 38px;
+    line-height: normal;
     padding: 0;
 }
 
@@ -234,6 +234,10 @@ input[type="button"].btn-link, input[type="submit"].btn-link {
 
 input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
+}
+
+select {
+    height: 28px;
 }
 
 ul.treeview ul {

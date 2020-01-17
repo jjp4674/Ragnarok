@@ -1,0 +1,110 @@
+﻿@model RagnarokWebsite.Models.CampViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Ragnarok > Camp Administration - Add New Camp";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12"><h2>Camp Administration - Add New Camp</h2></div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @Html.AntiForgeryToken()
+
+        <div class="col-12">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Name</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Location</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "" } })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Year</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.DropDownListFor(model => Model.Year, Model.Options)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 pt-2">
+            <h3>Camp Master Information</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">First Name</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.CMFirstName, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.CMFirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Last Name</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.CMLastName, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.CMLastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Character Name</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.CMCharacterName, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.CMCharacterName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-xs-12 pt-2">
+            <span class="col-form-label">Email</span>
+        </div>
+        <div class="col-md-10 col-xs-12 pt-2">
+            @Html.EditorFor(model => model.CMEmail, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.CMEmail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 pt-2">
+            <input type="submit" value="Add Camp" class="btn btn-success centerButton" />
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-12 pb-2 pb-2">
+        @Html.ActionLink("Back to Camps", "Index")
+    </div>
+</div>
